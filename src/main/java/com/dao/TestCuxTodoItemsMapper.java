@@ -10,6 +10,8 @@ public interface TestCuxTodoItemsMapper {
 
     void insert(@Param("item") CuxTodoItems cuxTodoItems);
 
+    void insert2(CuxTodoItems cuxTodoItems);
+
     List<CuxTodoItems> selectItembyparam1(@Param("id") int userId,@Param("pty") String Priority);
 
 

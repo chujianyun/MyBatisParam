@@ -23,6 +23,21 @@ public class CuxTodoItemsController {
 
     @RequestMapping("insert")
     public Integer insert(Integer userId, String todoItemTitle, String todoItemContent, String priority) {
+        CuxTodoItems cuxTodoItems = getCuxTodoItem(userId, todoItemTitle, todoItemContent, priority);
+        Integer id = service.insert(cuxTodoItems);
+        System.out.println(id);
+        return id;
+    }
+
+    @RequestMapping("insert2")
+    public Integer inser2t(Integer userId, String todoItemTitle, String todoItemContent, String priority) {
+        CuxTodoItems cuxTodoItems = getCuxTodoItem(userId, todoItemTitle, todoItemContent, priority);
+        Integer id = service.insert2(cuxTodoItems);
+        System.out.println(id);
+        return id;
+    }
+
+    private CuxTodoItems getCuxTodoItem(Integer userId, String todoItemTitle, String todoItemContent, String priority) {
         CuxTodoItems cuxTodoItems = new CuxTodoItems();
 
         cuxTodoItems.setUserId(userId);
@@ -32,9 +47,8 @@ public class CuxTodoItemsController {
         cuxTodoItems.setCreationDate(new Date());
         cuxTodoItems.setLastUpdateDate(new Date());
         cuxTodoItems.setComments("");
-        Integer insert = service.insert(cuxTodoItems);
-        System.out.println(insert);
-        return insert;
+
+        return cuxTodoItems;
     }
 
     @RequestMapping("query1")

@@ -11,6 +11,11 @@
     <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
     <result column="comments" jdbcType="VARCHAR" property="comments" />
   </resultMap>
+    
+    <insert id="insert2" useGeneratedKeys="true" keyProperty="todoItemId">
+        insert into cux_todo_items (user_id,todo_item_title,todo_item_content,priority)
+        values ( #{userId},#{todoItemTitle},#{todoItemContent},#{priority});
+    </insert>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="item.todoItemId">
         insert into cux_todo_items (user_id,todo_item_title,todo_item_content,priority)

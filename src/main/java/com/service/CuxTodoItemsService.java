@@ -18,6 +18,12 @@ public class CuxTodoItemsService {
         return cuxTodoItems.getTodoItemId();
     }
 
+    public Integer insert2(CuxTodoItems cuxTodoItems) {
+        todoItemsMapper.insert2(cuxTodoItems);
+        return cuxTodoItems.getTodoItemId();
+    }
+
+
     public List<CuxTodoItems> query1() {
         return todoItemsMapper.selectItembyparam1(1, "medium");
     }
