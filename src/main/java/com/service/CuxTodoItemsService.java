@@ -13,11 +13,16 @@ public class CuxTodoItemsService {
     @Autowired
     private TestCuxTodoItemsMapper todoItemsMapper;
 
-    public List<CuxTodoItems> query1() {
-        return todoItemsMapper.selectItembyparam1(1,"medium");
+    public Integer insert(CuxTodoItems cuxTodoItems) {
+        todoItemsMapper.insert(cuxTodoItems);
+        return cuxTodoItems.getTodoItemId();
     }
 
-    public List<CuxTodoItems>  query2() {
+    public List<CuxTodoItems> query1() {
+        return todoItemsMapper.selectItembyparam1(1, "medium");
+    }
+
+    public List<CuxTodoItems> query2() {
 
         CuxTodoItems items = new CuxTodoItems();
         items.setUserId(1);
@@ -31,7 +36,7 @@ public class CuxTodoItemsService {
         items.setPriority("high");
         CuxUsers users = new CuxUsers();
         users.setUserId(2);
-        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam3(items,users);
+        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam3(items, users);
         return itemsList;
     }
 
@@ -40,7 +45,7 @@ public class CuxTodoItemsService {
     }
 
     public List<CuxTodoItems> query5() {
-        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam5(1,"high");
+        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam5(1, "high");
         return itemsList;
     }
 
@@ -51,12 +56,13 @@ public class CuxTodoItemsService {
         List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam6(items);
         return itemsList;
     }
-    public List<CuxTodoItems> query7(){
+
+    public List<CuxTodoItems> query7() {
         CuxTodoItems items = new CuxTodoItems();
         items.setPriority("medium");
         CuxUsers users = new CuxUsers();
         users.setUserId(1);
-        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam7(items,users);
+        List<CuxTodoItems> itemsList = todoItemsMapper.selectItembyparam7(items, users);
         return itemsList;
     }
 

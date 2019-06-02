@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface TestCuxTodoItemsMapper {
 
+    void insert(@Param("item") CuxTodoItems cuxTodoItems);
 
     List<CuxTodoItems> selectItembyparam1(@Param("id") int userId,@Param("pty") String Priority);
 

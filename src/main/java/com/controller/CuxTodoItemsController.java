@@ -1,10 +1,14 @@
 package com.controller;
 
+import java.util.Date;
+
 import com.model.CuxTodoItems;
 import com.service.CuxTodoItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -16,6 +20,22 @@ import java.util.List;
 public class CuxTodoItemsController {
     @Autowired
     private CuxTodoItemsService service;
+
+    @RequestMapping("insert")
+    public Integer insert(Integer userId, String todoItemTitle, String todoItemContent, String priority) {
+        CuxTodoItems cuxTodoItems = new CuxTodoItems();
+
+        cuxTodoItems.setUserId(userId);
+        cuxTodoItems.setTodoItemTitle(todoItemTitle);
+        cuxTodoItems.setTodoItemContent(todoItemContent);
+        cuxTodoItems.setPriority(priority);
+        cuxTodoItems.setCreationDate(new Date());
+        cuxTodoItems.setLastUpdateDate(new Date());
+        cuxTodoItems.setComments("");
+        Integer insert = service.insert(cuxTodoItems);
+        System.out.println(insert);
+        return insert;
+    }
 
     @RequestMapping("query1")
     public List<CuxTodoItems> query1() {
